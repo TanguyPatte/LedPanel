@@ -20,7 +20,7 @@ import java.io.IOException;
 import java.util.UUID;
 
 
-public class ledControl extends ActionBarActivity {
+public class ledControl extends ActionBarActivity implements View.OnClickListener {
 
     ImageButton btnOn1, btnOn2, btnOn3, btnOn4, btnOn5, btnOn6;
     Button btnDis;
@@ -58,69 +58,16 @@ public class ledControl extends ActionBarActivity {
         new ConnectBT().execute(); //Call the class to connect
 
         //commands to be sent to bluetooth
-        btnOn1.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                turnOnButton1();      //method to turn on button 1
-            }
-        });
-
-        btnOn2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                turnOnButton2();      //method to turn on button 2
-            }
-        });
-
-        btnOn3.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                turnOnButton3();      //method to turn on button 3
-            }
-        });
-
-        btnOn4.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                turnOnButton4();      //method to turn on button 4
-            }
-        });
-
-        btnOn5.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                turnOnButton5();      //method to turn on button 5
-            }
-        });
-
-        btnOn6.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v)
-            {
-                turnOnButton6();      //method to turn on button 6
-            }
-        });
-
-        btnDis.setOnClickListener(new View.OnClickListener()
-        {
-            @Override
-            public void onClick(View v)
-            {
-                Disconnect(); //close connection
-            }
-        });
-
+        btnOn1.setOnClickListener(this);
+        btnOn2.setOnClickListener(this);
+        btnOn3.setOnClickListener(this);
+        btnOn4.setOnClickListener(this);
+        btnOn5.setOnClickListener(this);
+        btnOn6.setOnClickListener(this);
+        btnDis.setOnClickListener(this);
     }
 
-    private void Disconnect()
+    private void disconnect()
     {
         if (btSocket!=null) //If the btSocket is busy
         {
@@ -135,92 +82,6 @@ public class ledControl extends ActionBarActivity {
 
     }
 
-    private void turnOnButton1()
-    {
-        if (btSocket!=null)
-        {
-            try
-            {
-                btSocket.getOutputStream().write("1".toString().getBytes());
-            }
-            catch (IOException e)
-            {
-                msg("Error");
-            }
-        }
-    }
-
-    private void turnOnButton2()
-    {
-        if (btSocket!=null)
-        {
-            try
-            {
-                btSocket.getOutputStream().write("2".toString().getBytes());
-            }
-            catch (IOException e)
-            {
-                msg("Error");
-            }
-        }
-    }
-
-    private void turnOnButton3()
-    {
-        if (btSocket!=null)
-        {
-            try
-            {
-                btSocket.getOutputStream().write("3".toString().getBytes());
-            }
-            catch (IOException e)
-            {
-                msg("Error");
-            }
-        }
-    }
-    private void turnOnButton4()
-    {
-        if (btSocket!=null)
-        {
-            try
-            {
-                btSocket.getOutputStream().write("4".toString().getBytes());
-            }
-            catch (IOException e)
-            {
-                msg("Error");
-            }
-        }
-    }
-    private void turnOnButton5()
-    {
-        if (btSocket!=null)
-        {
-            try
-            {
-                btSocket.getOutputStream().write("5".toString().getBytes());
-            }
-            catch (IOException e)
-            {
-                msg("Error");
-            }
-        }
-    }
-    private void turnOnButton6()
-    {
-        if (btSocket!=null)
-        {
-            try
-            {
-                btSocket.getOutputStream().write("6".toString().getBytes());
-            }
-            catch (IOException e)
-            {
-                msg("Error");
-            }
-        }
-    }
     // fast way to call Toast
     private void msg(String s)
     {
@@ -247,6 +108,48 @@ public class ledControl extends ActionBarActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onClick(View v) {
+
+        switch (v.getId()){
+            case R.id.imageButton1:
+                turnOn("1");
+                break;
+            case R.id.imageButton2:
+                turnOn("2");
+                break;
+            case R.id.imageButton3:
+                turnOn("3");
+                break;
+            case R.id.imageButton4:
+                turnOn("4");
+                break;
+            case R.id.imageButton5:
+                turnOn("5");
+                break;
+            case R.id.imageButton6:
+                turnOn("6");
+                break;
+            case R.id.button7:
+                disconnect();
+                break;
+        }
+    }
+
+    private void turnOn(String number) {
+        if (btSocket!=null)
+        {
+            try
+            {
+                btSocket.getOutputStream().write(number.getBytes());
+            }
+            catch (IOException e)
+            {
+                msg("Error");
+            }
+        }
     }
 
     private class ConnectBT extends AsyncTask<Void, Void, Void>  // UI thread
