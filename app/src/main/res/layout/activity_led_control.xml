@@ -1,0 +1,107 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.led.led.ledControl">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="LED Panel Control"
+        android:id="@+id/textView2"
+        android:textSize="18sp"
+        android:textStyle="normal|bold"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageButton
+        android:id="@+id/imageButton1"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false"
+        app:srcCompat="@drawable/bf1"
+        android:scaleType="fitXY"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:contentDescription='Commande "1"'
+        android:layout_toLeftOf="@+id/imageButton2"
+        android:layout_alignTop="@+id/imageButton2" />
+
+    <ImageButton
+        android:id="@+id/imageButton5"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false"
+        app:srcCompat="@drawable/bf5"
+        android:scaleType="fitXY"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:contentDescription='Commande "5"'
+        android:layout_alignTop="@+id/imageButton4"
+        android:layout_toEndOf="@+id/imageButton1" />
+
+    <ImageButton
+        android:id="@+id/imageButton4"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false"
+        app:srcCompat="@drawable/bf4"
+        android:scaleType="fitXY"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginTop="17dp"
+        android:contentDescription='Commande "4"'
+        android:layout_below="@+id/imageButton2"
+        android:layout_toStartOf="@+id/imageButton5" />
+
+    <ImageButton
+        android:id="@+id/imageButton6"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false"
+        app:srcCompat="@drawable/bf6"
+        android:scaleType="fitXY"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:contentDescription='Commande "6"'
+        android:layout_alignTop="@+id/imageButton5"
+        android:layout_toEndOf="@+id/imageButton5" />
+
+    <ImageView
+        android:layout_width="200dip"
+        android:layout_height="200dip"
+        app:srcCompat="@drawable/creative_lab_logo"
+        android:id="@+id/imageView"
+        android:layout_below="@+id/imageButton5"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="11dp" />
+
+    <ImageButton
+        android:id="@+id/imageButton2"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false"
+        app:srcCompat="@drawable/bf2"
+        android:scaleType="fitXY"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:contentDescription='Commande "2"'
+        android:layout_below="@+id/textView2"
+        android:layout_centerHorizontal="true" />
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:adjustViewBounds="false"
+        android:cropToPadding="false"
+        app:srcCompat="@drawable/bf3"
+        android:scaleType="fitXY"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:contentDescription='Commande "3"'
+        android:layout_toEndOf="@+id/imageButton2"
+        android:layout_alignTop="@id/imageButton2" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Disconnect"
+        android:id="@+id/button7"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>
